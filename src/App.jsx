@@ -156,32 +156,49 @@ function App() {
       {/* NHẬP ĐIỂM VÁN MỚI */}
       <section className="card">
         <h3 style={{ marginTop: 0, marginBottom: '20px' }}>Ván tiếp theo</h3>
-        {players.map(p => (
-          <div key={p.id} className="player-block">
-            <div className="player-header">
-              <span className="player-name">{p.name}</span>
-              <input 
-                type="number" 
-                inputMode="numeric" 
-                pattern="[0-9]*"
-                className="input-score" 
-                value={roundScores[p.id]} 
-                onChange={e => setRoundScores({ ...roundScores, [p.id]: e.target.value })} 
-              />
-            </div>
-            <div className="quick-actions">
-              {[-20, -15, -10, -5, 5, 10, 15, 20].map(v => (
-                <button 
-                  key={v} 
-                  className={`btn-q ${v > 0 ? 'pos' : 'neg'}`}
-                  onClick={() => updateRoundVal(p.id, v)}
-                >
-                  {v > 0 ? `+${v}` : v}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+       {players.map(p => (
+  <div key={p.id} className="player-block">
+    <div className="player-header">
+      <span className="player-name">{p.name}</span>
+      
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        {/* Nút Đảo Dấu +/- */}
+        <button 
+          className="btn-toggle-sign"
+          onClick={() => {
+            const currentVal = Number(roundScores[p.id]) || 0;
+            if (currentVal !== 0) {
+              setRoundScores({ ...roundScores, [p.id]: currentVal * -1 });
+            }
+          }}
+        >
+          +/-
+        </button>
+
+        <input 
+          type="number" 
+          inputMode="numeric" 
+          pattern="[0-9]*"
+          className="input-score" 
+          value={roundScores[p.id]} 
+          onChange={e => setRoundScores({ ...roundScores, [p.id]: e.target.value })} 
+        />
+      </div>
+    </div>
+
+    <div className="quick-actions">
+      {[-20, -15, -10, -5, 5, 10, 15, 20].map(v => (
+        <button 
+          key={v} 
+          className={`btn-q ${v > 0 ? 'pos' : 'neg'}`}
+          onClick={() => setRoundScores({ ...roundScores, [p.id]: (Number(roundScores[p.id]) || 0) + v })}
+        >
+          {v > 0 ? `+${v}` : v}
+        </button>
+      ))}
+    </div>
+  </div>
+))}
 
         {error && <div className="error-msg"><AlertCircle size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} /> {error}</div>}
         

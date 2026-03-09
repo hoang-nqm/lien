@@ -25,3 +25,31 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.btn-toggle-sign {
+  background: #e2e8f0; /* Màu xám nhạt */
+  color: #475569;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s;
+}
+
+.btn-toggle-sign:active {
+  background: #cbd5e1;
+  transform: scale(0.9);
+}
+
+/* Đảm bảo ô input và nút nằm trên cùng 1 hàng */
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
