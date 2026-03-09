@@ -11,7 +11,7 @@ function App() {
   const [roundScores, setRoundScores] = useState({});
   const [error, setError] = useState("");
 
-  // Tự động Load dữ liệu
+  // Tự động Load dữ liệu khi mở trang
   useEffect(() => {
     const saved = localStorage.getItem('lieng_v4_final');
     if (saved) {
@@ -23,7 +23,7 @@ function App() {
     }
   }, []);
 
-  // Tự động Lưu dữ liệu
+  // Tự động Lưu dữ liệu khi có thay đổi
   useEffect(() => {
     if (isStarted) {
       localStorage.setItem('lieng_v4_final', JSON.stringify({ players, history, isStarted }));
@@ -39,7 +39,7 @@ function App() {
   const handleStart = () => {
     const newPs = Array.from({ length: numPlayers }).map((_, i) => ({
       id: i,
-      name: tempNames[i] || `Người chơi ${i + 1}`,
+      name: tempNames[i] || `P${i + 1}`,
       totalScore: 0
     }));
     setPlayers(newPs);
@@ -85,7 +85,7 @@ function App() {
     }
   };
 
-  // MÀN HÌNH SET UP
+  // MÀN HÌNH SET UP (Khi mới mở app)
   if (!isStarted) {
     return (
       <div className="app-wrapper">
@@ -125,17 +125,17 @@ function App() {
     );
   }
 
-  // MÀN HÌNH CHÍNH
+  // MÀN HÌNH CHÍNH (Khi đang chơi)
   return (
     <div className="app-wrapper">
       <header className="header">
         <h1>Liêng Scorer</h1>
-        <button onClick={resetGame} style={{ background: 'none', border: 'none', color: var(--text-sub) }}>
+        <button onClick={resetGame} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>
           <RotateCcw size={22} />
         </button>
       </header>
 
-      {/* TỔNG ĐIỂM */}
+      {/* TỔNG ĐIỂM HIỆN TẠI */}
       <section className="card">
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '16px' }}>
           <Trophy size={16} color="#f59e0b" />
@@ -190,7 +190,7 @@ function App() {
         </button>
       </section>
 
-      {/* LỊCH SỬ 5 VÁN */}
+      {/* LỊCH SỬ 5 VÁN GẦN NHẤT */}
       {history.length > 0 && (
         <div style={{ marginBottom: '40px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>
