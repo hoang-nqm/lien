@@ -1,28 +1,129 @@
-/* Reset căn bản để ứng dụng hiển thị đúng */
+/* src/App.css */
 :root {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  background-color: #f8fafc; /* Màu nền nhẹ nhàng */
-  color: #1e293b;
+  --primary: #4f46e5;
+  --success: #10b981;
+  --danger: #ef4444;
+  --text-sub: #64748b;
 }
 
-body {
-  margin: 0;
-  display: block; /* Quan trọng: Xóa flex của Vite */
-  min-width: 100%;
+.app-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
   min-height: 100vh;
 }
 
-/* Loại bỏ viền xanh khi nhấn vào các phần tử trên điện thoại */
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-/* Tối ưu cho input số */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-item {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.stat-name { font-size: 13px; color: var(--text-sub); margin-bottom: 4px; }
+.stat-val { font-size: 22px; font-weight: 900; }
+
+.player-block {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-score {
+  width: 80px;
+  background: #f1f5f9;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.btn-q {
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pos { background: #ecfdf5; color: var(--success); }
+.neg { background: #fef2f2; color: var(--danger); }
+
+.btn-main {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.history-table th, .history-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.setup-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
