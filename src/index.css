@@ -1,0 +1,28 @@
+/* Reset căn bản để ứng dụng hiển thị đúng */
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #f8fafc; /* Màu nền nhẹ nhàng */
+  color: #1e293b;
+}
+
+body {
+  margin: 0;
+  display: block; /* Quan trọng: Xóa flex của Vite */
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+/* Loại bỏ viền xanh khi nhấn vào các phần tử trên điện thoại */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Tối ưu cho input số */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
